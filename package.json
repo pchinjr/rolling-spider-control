@@ -1,0 +1,17 @@
+{
+  "name": "rolling-spider-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "flight.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "rolling-spider": "git://github.com/pchinjr/node-rolling-spider#high-sierra",
+    "socket.io": "^2.0.4",
+    "temporal": "^0.6.0"
+  }
+}
