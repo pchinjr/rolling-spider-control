@@ -23,41 +23,41 @@ rollingSpider.connect( function() {
 
         io.on('connection', function (socket) {
             console.log("your socket id is ", socket.id);
-          
+            
             socket.on('takeOff', function() {
-              console.log('takeOff clicked');
-              rollingSpider.takeOff();
-              rollingSpider.flatTrim();
+                console.log('takeOff clicked');
+                rollingSpider.takeOff()
+                rollingSpider.flatTrim()
             });
-          
+            
             socket.on('land', function() {
-              console.log('land clicked');
-              rollingSpider.land();
+                console.log('land clicked');
+                rollingSpider.land();
             });
-          
+            
             socket.on('forward', function() {
-              console.log('forward clicked');
-              rollingSpider.forward({steps: 10});
+                console.log('forward clicked');
+                rollingSpider.forward({steps: 10});
             });
-          
+            
             socket.on('backward', function() {
-              console.log('backward clicked');
-              rollingSpider.backward({steps: 10});
+                console.log('backward clicked');
+                rollingSpider.backward({steps: 10});
             });
-          
+            
             socket.on('turnLeft', function() {
-              console.log('turnLeft clicked');
-              rollingSpider.turnLeft({steps: 10});
+                console.log('turnLeft clicked');
+                rollingSpider.turnLeft({steps: 10});
             });
-          
+            
             socket.on('turnRight', function() {
-              console.log('turnRight clicked');
-              rollingSpider.turnRight({steps: 10});
+                console.log('turnRight clicked');
+                rollingSpider.turnRight({steps: 10});
             });
-          
+            
             socket.on('disconnect', function() {
-              console.log('browser closed');
+                console.log('browser closed');
             })
-          });
+        });
     })
 });

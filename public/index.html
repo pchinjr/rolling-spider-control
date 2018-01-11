@@ -30,35 +30,20 @@
     <h1>Welcome to Rolling Spider</h1>
     <div>
       <div> 
-        <button id='takeOff'>Take Off</button> 
-        <button id='forward'>⬆️ Forward ⬆️</button> 
-        <button id='land'>Land</button> 
+        <button id='takeOff' onclick="socket.emit('takeOff')">Take Off</button> 
+        <button id='forward' onclick="socket.emit('forward')">⬆️ Forward ⬆️</button> 
+        <button id='land' onclick="socket.emit('land')">Land</button> 
       </div>
       <div>
-        <button id='turnLeft'>⬅️ Turn Left ⬅️</button>
-        <button id='backward'>⬇️ Backward ⬇️</button>
-        <button id='turnRight'>➡️ Turn Right ➡️</button>
+        <button id='turnLeft' onclick="socket.emit('turnLeft')">⬅️ Turn Left ⬅️</button>
+        <button id='backward' onclick="socket.emit('backward')">⬇️ Backward ⬇️</button>
+        <button id='turnRight' onclick="socket.emit('turnRight')">➡️ Turn Right ➡️</button>
       </div>
   </div>
 
 <script src="/socket.io/socket.io.js"></script>  
 <script type="text/javascript">
   var socket = io();
-
-  const takeOffButton = document.getElementById('takeOff');
-  const landButton = document.getElementById('land');
-  const forwardButton = document.getElementById('forward');
-  const turnLeftButton = document.getElementById('turnLeft');
-  const turnRightButton = document.getElementById('turnRight');
-  const backwardButton = document.getElementById('backward');
-  
-  takeOffButton.onclick = (event) => socket.emit('takeOff');
-  landButton.onclick = (event) => socket.emit('land');
-  forwardButton.onclick = (event) => socket.emit('forward');
-  backwardButton.onclick = (event) => socket.emit('backward');
-  turnLeftButton.onclick = (event) => socket.emit('turnLeft');
-  turnRightButton.onclick = (event) => socket.emit('turnRight');
-
 </script>
 
 </body>
