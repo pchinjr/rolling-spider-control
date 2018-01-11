@@ -3,9 +3,38 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Control Rolling Spider</title>
+
+  <style>
+  button {
+    width: 200px;
+    height: 30px;
+  }
+  </style>
 </head>
 
 <body>
-  <h1>Welcome</h1>
+  <div>
+    <h1>Welcome to Rolling Spider</h1>
+    <button id='take-off'>Take Off</button>
+    <button id='land'>Land</button>
+  </div>
+
+<script src="/socket.io/socket.io.js"></script>  
+<script type="text/javascript">
+  var socket = io();
+
+  const takeOffButton = document.getElementById('take-off');
+  const landButton = document.getElementById('land');
+  
+  takeOffButton.onclick = function(event) {
+    socket.emit('take-off');
+  }
+
+  landButton.onclick = function(event) {
+    socket.emit('land');
+  }
+
+</script>
+
 </body>
 </html>
