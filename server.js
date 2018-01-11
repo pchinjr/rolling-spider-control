@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
 const RollingSpider = require('rolling-spider');
-const rollingSpider = new RollingSpider();
+let rollingSpider = new RollingSpider();
 
 rollingSpider.connect( function() {
     rollingSpider.setup( function () {
@@ -20,25 +20,44 @@ rollingSpider.connect( function() {
         rollingSpider.startPing();
         rollingSpider.flatTrim();
         console.log('Connected to drone ', rollingSpider.name);
+
+        io.on('connection', function (socket) {
+            console.log("your socket id is ", socket.id);
+          
+            socket.on('takeOff', function() {
+              console.log('takeOff clicked');
+              rollingSpider.takeOff();
+              rollingSpider.flatTrim();
+            });
+          
+            socket.on('land', function() {
+              console.log('land clicked');
+              rollingSpider.land();
+            });
+          
+            socket.on('forward', function() {
+              console.log('forward clicked');
+              rollingSpider.forward({steps: 10});
+            });
+          
+            socket.on('backward', function() {
+              console.log('backward clicked');
+              rollingSpider.backward({steps: 10});
+            });
+          
+            socket.on('turnLeft', function() {
+              console.log('turnLeft clicked');
+              rollingSpider.turnLeft({steps: 10});
+            });
+          
+            socket.on('turnRight', function() {
+              console.log('turnRight clicked');
+              rollingSpider.turnRight({steps: 10});
+            });
+          
+            socket.on('disconnect', function() {
+              console.log('browser closed');
+            })
+          });
     })
-})
-
-
-//SocketIO connection handler and listening
-io.on('connection', function (socket) {
-  console.log("your socket id is ", socket.id);
-
-  socket.on('take-off', function(data) {
-    console.log('takeoff clicked');
-    rollingSpider.takeOff();
-  });
-
-  socket.on('land', function(data) {
-    console.log('land clicked');
-    rollingSpider.land();
-  });
-
-  socket.on('disconnect', function() {
-    console.log('browser closed');
-  })
 });

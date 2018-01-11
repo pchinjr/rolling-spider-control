@@ -6,8 +6,21 @@
 
   <style>
   button {
-    width: 200px;
-    height: 30px;
+    width: 300px;
+    height: 50px;
+    margin: 10px;
+    background-color: grey;
+    color: white;
+    text-transform: uppercase;
+    font-size: 25px;
+  }
+  #takeOff {
+    background-color: Green;
+    color: white;
+  }
+  #land {
+    background-color: red;
+    color: white;
   }
   </style>
 </head>
@@ -15,24 +28,36 @@
 <body>
   <div>
     <h1>Welcome to Rolling Spider</h1>
-    <button id='take-off'>Take Off</button>
-    <button id='land'>Land</button>
+    <div>
+      <div> 
+        <button id='takeOff'>Take Off</button> 
+        <button id='forward'>⬆️ Forward ⬆️</button> 
+        <button id='land'>Land</button> 
+      </div>
+      <div>
+        <button id='turnLeft'>⬅️ Turn Left ⬅️</button>
+        <button id='backward'>⬇️ Backward ⬇️</button>
+        <button id='turnRight'>➡️ Turn Right ➡️</button>
+      </div>
   </div>
 
 <script src="/socket.io/socket.io.js"></script>  
 <script type="text/javascript">
   var socket = io();
 
-  const takeOffButton = document.getElementById('take-off');
+  const takeOffButton = document.getElementById('takeOff');
   const landButton = document.getElementById('land');
+  const forwardButton = document.getElementById('forward');
+  const turnLeftButton = document.getElementById('turnLeft');
+  const turnRightButton = document.getElementById('turnRight');
+  const backwardButton = document.getElementById('backward');
   
-  takeOffButton.onclick = function(event) {
-    socket.emit('take-off');
-  }
-
-  landButton.onclick = function(event) {
-    socket.emit('land');
-  }
+  takeOffButton.onclick = (event) => socket.emit('takeOff');
+  landButton.onclick = (event) => socket.emit('land');
+  forwardButton.onclick = (event) => socket.emit('forward');
+  backwardButton.onclick = (event) => socket.emit('backward');
+  turnLeftButton.onclick = (event) => socket.emit('turnLeft');
+  turnRightButton.onclick = (event) => socket.emit('turnRight');
 
 </script>
 
