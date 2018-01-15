@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));
 
 const RollingSpider = require('rolling-spider');
-let rollingSpider = new RollingSpider();
+let rollingSpider = new RollingSpider(process.env.UUID);
 
 rollingSpider.connect( function() {
     rollingSpider.setup( function () {
