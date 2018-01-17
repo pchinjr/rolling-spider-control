@@ -39,6 +39,10 @@
         <button id='backward' onclick="socket.emit('backward')">⬇️ Backward ⬇️</button>
         <button id='turnRight' onclick="socket.emit('turnRight')">➡️ Turn Right ➡️</button>
       </div>
+      <div>
+        <button id='connect' onclick="socket.emit('connectDrone')">CONNECT</button>
+        <button id='disconnect' onclick="socket.emit('disconnectDrone')">DISCONNECT</button>
+      </div>
   </div>
 
 <script src="/socket.io/socket.io.js"></script>  
